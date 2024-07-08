@@ -1,5 +1,15 @@
 use std::vec;
 
+#[derive(Debug, PartialEq, Eq)]
+enum Value<'src> {
+    // 数値
+    Num(i32),
+    // オペレーション
+    Op(&'src str),
+    // ブロック
+    Block(Vec<Value<'src>>),
+}
+
 fn main() {
     for line in std::io::stdin().lines() {
         let mut stack = vec![];
